@@ -1,1 +1,91 @@
-Sample Test File over Golang http.FileServer
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動く時計</title>
+        <script>
+        function updateClock() {
+            // 現在時刻を取得
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // 1桁の場合は0を付ける
+            if (month < 10) month = '0' + month;
+            if (day < 10) day = '0' + day;
+            if (hours < 10) hours = '0' + hours;
+            if (minutes < 10) minutes = '0' + minutes;
+            if (seconds < 10) seconds = '0' + seconds;
+
+            // 時刻を表示
+            var dateString = year + '年' + month + '月' + day + '日';
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('date').innerHTML = dateString;
+            document.getElementById('clock').innerHTML = timeString;
+        }
+
+        // 1秒ごとにupdateClock関数を実行
+        setInterval(updateClock, 1000);
+
+        // ページ読み込み時に即座に表示
+        window.onload = updateClock;
+    </script>
+</head>
+<body>
+    <h1 style="margin-bottom: 5px;">現在時刻</h1>
+    <div>
+    <div id="date" style="font-size: 32px; font-weight: bold; color: gray; display: inline-block; border: 2px solid black; margin-bottom: 5px;">
+        0000年00月00日
+    </div>
+    <div id="clock" style="font-size: 32px; font-weight: bold; color: red; display: inline-block; border: 2px solid black;">
+        00:00:00
+    </div>
+    </div>
+
+    <img src="https://th.bing.com/th/id/R.e16e1602f52f6f4f86d9085bf8c82ee7?rik=fFxSNMfdE0dnlQ&riu=http%3a%2f%2ffarm3.static.flickr.com%2f2686%2f4308463560_0ea3a4d77f_o.jpg&ehk=QQyQ9bc8haBYtsDKQ48v1eqtWUs7f4INvD5xZzBrP%2bI%3d&risl=1&pid=ImgRaw&r=0" width="300" height="200" alt="ラーメン">
+    <h1>🌐 Phase 0-1: HTML基礎確認</h1>
+
+    <div>
+        <h2>📝 課題1: 自己紹介セクション作成</h2>
+        <p><strong>指示:</strong> 下記のHTMLコメント部分に、あなたの自己紹介を書いてください。</p>
+        <h3>自己紹介</h3>
+        <p>名前: 白井京太郎</p>
+        <p>職業: 大学生</p>
+        <p>趣味: マジック</p>
+        <p>✅ 完了したら、この課題は終了です</p>
+    </div>
+
+    <div>
+        <h2>📋 課題2: リスト作成</h2>
+        <p><strong>指示:</strong> 好きな食べ物を5つ、番号付きリスト（ol）で作成してください。</p>
+        <ol>
+            <li>ラーメン</li>
+            <li>ぷっちょ</li>
+            <li>生姜焼き</li>
+            <li>さつまいもの天ぷら</li>
+            <li>ピザ</li>
+        </ol>
+    </div>
+
+    <div>
+        <h2>🔗 課題3: リンク作成</h2>
+        <p><strong>指示:</strong> 以下のリンクを作成してください：</p>
+        <ul>
+            <li>Google（新しいタブで開く）</li>
+            <li>GitHub（新しいタブで開く）</li>
+        </ul>
+        <ul>
+            <li><a href="https://www.google.com/"target="_blank">Google</a></li>
+            <li><a href="https://github.com/"target="_blank">GitHub</a></li>
+        </ul>
+
+        <p><a href="second.html">2ページ目へ</a></p>
+
+    </div>
+</body>
+</html>
