@@ -2,15 +2,26 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"runtime"
+	"time"
+    "math/rand" //追加
 )
 func main() {
-	fmt.Printf("Go version: %s\n", runtime.Version())
+	http.HandleFunc("/hello", hellohandler)
+	http.HandleFunc("/now", nowhandler)
+	http.HandleFunc("/dice", dicehandler)
 
-	http.Handle("/", http.FileServer(http.Dir("public/")))
-
-	fmt.Println("Launch server...")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		fmt.Printf("Failed to launch server: %v", err)
-	}
-}   
+	http.ListenAndServe(":8080", nil)
+}
+func hellohandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "こんにちは from Cocespace !")
+}
+func nowhandler(w http.ResponseWriter, r *http.Request) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	fmt.Fprintln(w, (time.Now().In(jst)).Format("2006年01月02日 15:04:05"))
+}
+/* 以下，関数を追加 */
+func dicehandler(w http.ResponseWriter, r *http.Request) {
+	seed := time.Now().UnixNano()
+	d := rand.New(rand.NewSource(seed))
+  fmt.Fprintln(w,d.Int31n(5)+1)
+}
